@@ -8,7 +8,7 @@ Use the command line to read large text. support:
 
 # install
 
-> git clone && npm link
+> git clone git@github.com:swlws/ctr.git && npm link
 
 # command line interface
 
@@ -34,6 +34,10 @@ c23f22d7034cadb93edfa9062f609979        def.txt /root/def.txt
 ## rm one text
 
 > ctr rm ad41372694dacab9012b9e2178e3ef53
+
+## rm all text
+
+> ctr rm all
 
 ## show one text content
 

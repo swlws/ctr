@@ -1,15 +1,19 @@
 const h = `read book via cmd command line interface
 
-help: show help info. eg: help
-add: add one book. eg: add book_path; add book_dir
-rm: remove one book. eg: rm book_id
-set: set app attr.
-    set page size. eg: set size 100
-
-when read one book
-  u: previous page
-  n: next page
-  entry: next page
+ctr help: show help info. eg: ctr help
+ctr add: 
+  add directory. eg: ctr add book_dir
+  add one book. eg: ctr add book_path
+ctr rm: 
+  remove all book. eg: ctr rm all
+  remove one book. eg: rm book_id
+ctr set: set app attr.
+  set page size. eg: set size 100
+ctr ID: show one book
+  when read one book
+    u: previous page
+    n: next page
+    entry: next page
 `;
 
 function main() {
