@@ -47,12 +47,12 @@ function analyze_path(filepath) {
 }
 
 /**
- * 展示书列表
+ * 展示文件列表
  *
  * @param {*} list
  * @returns
  */
-function print_book_list(list) {
+function print_file_list(list) {
   if (!list.length) return;
 
   console.log(`ID\tName\tPath`);
@@ -63,7 +63,7 @@ function print_book_list(list) {
 }
 
 /**
- * 添加一本或一批书
+ * 添加一本或一批文件
  *
  * @param {*} app_config
  * @param {*} filepath
@@ -84,8 +84,8 @@ function main(app_config, filepath) {
         position: 0,
       }));
 
-    // 显示新添加的书
-    print_book_list(arr);
+    // 显示新添加的文件
+    print_file_list(arr);
 
     // 添加到配置文件
     list.push(...arr);

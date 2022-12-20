@@ -24,30 +24,30 @@ function main() {
       break;
     case "list":
       {
-        const fn = require("./src/book_list");
+        const fn = require("./src/file_list");
         fn(app_config);
       }
       break;
     case "add":
       {
-        const fn = require("./src/add_book");
+        const fn = require("./src/add_file");
         fn(app_config, args[0]);
       }
       break;
     case "rm":
       {
         // 删除
-        const fn = require("./src/rm_book");
+        const fn = require("./src/rm_file");
         fn(app_config, args);
 
         // 显示剩余的
-        const fn2 = require("./src/book_list");
+        const fn2 = require("./src/file_list");
         fn2(app_config);
       }
       break;
     default:
       {
-        const fn = require("./src/show_book");
+        const fn = require("./src/show_file");
         fn(app_config, cmd);
       }
       break;

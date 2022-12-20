@@ -5,7 +5,7 @@ const iconv = require("iconv-lite");
 
 let SIZE = 1024,
   ENCODE = "utf8"; // utf8 gbk
-let BOOK_INFO;
+let FILE_INFO;
 let FD;
 
 const ORDER_EXIT = "q",
@@ -19,7 +19,7 @@ const ORDER_EXIT = "q",
  */
 function control_center() {
   // 打开文件
-  FD = fs.openSync(BOOK_INFO.path, "r");
+  FD = fs.openSync(FILE_INFO.path, "r");
   // 默认直接先显示一次
   show_word();
 
@@ -47,7 +47,7 @@ function show_word_via_order(order) {
     return;
   }
 
-  let pos = BOOK_INFO.position || 0;
+  let pos = FILE_INFO.position || 0;
   if (order === ORDER_PRE) {
     pos = (pos || 0) - SIZE;
   } else if ([ORDER_EMPTY, ORDER_NEXT].includes(order)) {
@@ -57,7 +57,7 @@ function show_word_via_order(order) {
   }
 
   if (pos < 0) pos = 0;
-  BOOK_INFO.position = pos;
+  FILE_INFO.position = pos;
 
   show_word();
 }
@@ -75,7 +75,7 @@ function show_word() {
     buffer,
     0,
     buffer.byteLength,
-    BOOK_INFO.position,
+    FILE_INFO.position,
     (err, bytesRead, buffer) => {
       if (err) {
         console.log(err);
@@ -89,21 +89,21 @@ function show_word() {
 }
 
 /**
- * 显示一本书的内容
+ * 显示一本文件的内容
  * 按字节显示
  *
  * @param {*} app_config
- * @param {*} book_id
+ * @param {*} file_id
  */
-function main(app_config, book_id) {
+function main(app_config, file_id) {
   const {
     app: { size, encode },
     list,
   } = app_config;
 
-  BOOK_INFO = (list || []).find((book) => book.id === book_id);
-  if (!BOOK_INFO) {
-    console.info("the book not exist");
+  FILE_INFO = (list || []).find((file) => file.id === file_id);
+  if (!FILE_INFO) {
+    console.info("the file not exist");
     return;
   }
 
@@ -111,7 +111,7 @@ function main(app_config, book_id) {
   SIZE = size;
   // 字符编码
   ENCODE = encode;
-  // 显示书的内容
+  // 显示文件的内容
   control_center();
 }
 module.exports = main;
