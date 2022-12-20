@@ -1,8 +1,10 @@
 const fs = require("fs");
 const readline = require("readline");
 const { clear_screen } = require("./helper");
+const iconv = require("iconv-lite");
 
-let SIZE = 1024;
+let SIZE = 1024,
+  ENCODE = "utf8"; // utf8 gbk
 let BOOK_INFO;
 let FD;
 
@@ -18,6 +20,7 @@ const ORDER_EXIT = "q",
 function control_center() {
   // 打开文件
   FD = fs.openSync(BOOK_INFO.path, "r");
+  // 默认直接先显示一次
   show_word();
 
   let rl = readline.createInterface(process.stdin, process.stdout);
@@ -78,8 +81,9 @@ function show_word() {
         console.log(err);
         return;
       }
-
-      console.log(buffer.toString());
+      const str = iconv.decode(buffer, ENCODE).toString();
+      console.log(str);
+      // console.log(buffer.toString());
     }
   );
 }
@@ -93,7 +97,7 @@ function show_word() {
  */
 function main(app_config, book_id) {
   const {
-    app: { size },
+    app: { size, encode },
     list,
   } = app_config;
 
@@ -105,6 +109,8 @@ function main(app_config, book_id) {
 
   // 每页显示的字数量
   SIZE = size;
+  // 字符编码
+  ENCODE = encode;
   // 显示书的内容
   control_center();
 }

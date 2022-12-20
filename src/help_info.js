@@ -9,6 +9,8 @@ ctr rm:
   remove one book. eg: rm book_id
 ctr set: set app attr.
   set page size. eg: set size 100
+  set encode. eg: ctr set encode gbk. default value is utf-8
+ctr config: show app config
 ctr ID: show one book
   when read one book
     u: previous page

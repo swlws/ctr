@@ -11,6 +11,11 @@ function main() {
         fn();
       }
       break;
+    case "config":
+      {
+        console.log(app_config.app);
+      }
+      break;
     case "set":
       {
         const fn = require("./src/set_app");

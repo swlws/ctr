@@ -4,7 +4,7 @@ const fs = require("fs");
 const config_path = path.join(__dirname, "..", ".ctr.json");
 
 // 默认配置
-let DEFAULT_CONFIG = { app: { size: 1024 }, list: [] };
+let DEFAULT_CONFIG = { app: { size: 1024, encode: "utf8" }, list: [] };
 
 /**
  * 代理拦截器

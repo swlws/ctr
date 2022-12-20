@@ -24,6 +24,13 @@ function main(app_config, args) {
         if (v > 0) app.size = v;
       }
       break;
+    case "encode":
+      {
+        let v = value.toLowerCase();
+        if (["utf-8", "gbk"].includes(v)) app.encode = v;
+        else console.log("the value must be utf8 or gbk");
+      }
+      break;
     default:
       {
         console.log(`Not Support ${type}`);

@@ -2,13 +2,18 @@
 
 Use the command line to read large text. support:
 
-- UTF-8
+- UTF-8、GBK
 - Memory text list
 - Breakpoint Continue Reading
 
 # install
 
-> git clone git@github.com:swlws/ctr.git && npm link
+```bash
+git clone git@github.com:swlws/ctr.git
+cd ctr
+npm install
+npm link
+```
 
 # command line interface
 
