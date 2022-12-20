@@ -61,7 +61,7 @@ function load_config() {
     const data = fs.readFileSync(config_path);
     DEFAULT_CONFIG = JSON.parse(data);
   } catch (err) {
-    console.error(err);
+    // console.error(err);
   }
 
   return deep_proxy(DEFAULT_CONFIG);
